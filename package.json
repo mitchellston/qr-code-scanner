@@ -1,11 +1,12 @@
 {
   "name": "react-simple-qr-code-scanner",
-  "version": "1.0.3",
+  "version": "1.5.0",
   "description": "A super simple qr code scanner",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn clean && tsc && cp package.json README.md ./dist"
+    "build": "yarn clean && tsc && cp package.json README.md ./dist",
+    "publishToNpm": "npm publish ./dist"
   },
   "repository": {
     "type": "git",
