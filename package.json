@@ -1,65 +1,40 @@
 {
   "name": "react-simple-qr-code-scanner",
-  "version": "1.0.0",
-  "description": "A super simple qr code scanner..",
-  "license": "MIT",
-  "author": "",
-  "keywords": [],
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "main": "./dist/react-simple-qr-code-scannert.umd.js",
-  "module": "./dist/react-simple-qr-code-scannert.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/react-simple-qr-code-scanner.es.js",
-      "require": "./dist/react-simple-qr-code-scanner.umd.js"
-    }
-  },
+  "version": "1.0.3",
+  "description": "A super simple qr code scanner",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "test": "vitest run",
-    "watch": "vitest",
-    "coverage": "vitest run --coverage"
+    "clean": "rm -rf dist",
+    "build": "yarn clean && tsc && cp package.json README.md ./dist"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitchellston/qr-code-scanner"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "node": true,
-      "es2020": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
-    "parserOptions": {
-      "sourceType": "module"
-    }
+  "keywords": [
+    "react",
+    "typescript",
+    "qr codes",
+    "qr-codes",
+    "qrcodes",
+    "qr code",
+    "qr-code",
+    "qrcode"
+  ],
+  "author": {
+    "name": "Mitchellston"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mitchellston/qr-code-scanner/issues"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.52",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "@zxing/library": "^0.19.1"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.8",
-    "@vitejs/plugin-react": "^2.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^4.8.4",
-    "vite": "^3.2.3"
   }
 }

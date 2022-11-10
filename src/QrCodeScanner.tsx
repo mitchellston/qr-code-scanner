@@ -5,7 +5,7 @@ type props = {
   result?: (result: Result) => void;
   errors?: (error: Exception) => void;
 };
-const BarcodeScanner = (props: props) => {
+export const QrCodeScanner = (props: props) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const reader = useRef(new BrowserMultiFormatReader());
 
@@ -34,4 +34,3 @@ const BarcodeScanner = (props: props) => {
     </div>
   );
 };
-export default BarcodeScanner;
