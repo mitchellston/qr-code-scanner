@@ -27,7 +27,7 @@ function App() {
       Errors={(error) => {
         //console.log(error);
       }},
-      facingMode={"enviroment"} //or user
+      facingMode={"environment"} //or user
     />
   );
 }
