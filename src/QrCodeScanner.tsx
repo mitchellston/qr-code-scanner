@@ -4,7 +4,7 @@ import React from "react";
 type props = {
   onResult: (result: Result) => void;
   Errors?: (error: Exception) => void;
-  facingMode?: "enviroment" | "user";
+  facingMode?: "environment" | "user";
 };
 export const QrCodeScanner = (props: props) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -16,7 +16,7 @@ export const QrCodeScanner = (props: props) => {
       {
         audio: false,
         video: {
-          facingMode: props.facingMode || "enviroment",
+          facingMode: props.facingMode || "environment",
         },
       },
       videoRef.current,
