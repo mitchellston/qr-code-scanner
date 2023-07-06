@@ -34,7 +34,6 @@ export function QrCodeScanner<T = string>(props: {
         if (result) {
           const data = () => {
             try {
-              console.log("kas", result.getText());
               let data: T;
               try {
                 data = parse<T>(result.getText());
@@ -45,7 +44,6 @@ export function QrCodeScanner<T = string>(props: {
               }
               return props.validate ? props.validate(data) : data;
             } catch (error: any) {
-              console.log("kas", error.message);
               if (
                 error &&
                 error != null &&

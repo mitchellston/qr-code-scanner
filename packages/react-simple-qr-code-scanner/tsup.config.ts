@@ -1,8 +1,6 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig((opts) => ({
-  splitting: true,
-  sourcemap: false,
   dts: true,
   outDir: "dist",
   format: ["esm"],
