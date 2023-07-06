@@ -2,8 +2,14 @@ import { BrowserMultiFormatReader, Exception, Result } from "@zxing/library";
 import { useEffect, useRef } from "react";
 import React from "react";
 type props = {
+  /** This event gets fired when a qr-code is scanned */
   onResult: (result: Result) => void;
-  Errors?: (error: Exception) => void;
+  /** This event gets fired when a exception occurs */
+  onError?: (error: Exception) => void;
+  /**
+   * Which mode should the scanner face
+   * @default "environment"
+   */
   facingMode?: "environment" | "user";
 };
 export const QrCodeScanner = (props: props) => {
@@ -22,7 +28,7 @@ export const QrCodeScanner = (props: props) => {
       videoRef.current,
       (result, error) => {
         if (result) props.onResult(result);
-        if (error && props.Errors != null) props.Errors(error);
+        if (error && props.onError != null) props.onError(error);
       }
     );
     return () => {

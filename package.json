@@ -1,12 +1,11 @@
 {
   "name": "react-simple-qr-code-scanner",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A super simple qr code scanner",
-  "main": "index.js",
+  "license": "MIT",
+  "main": "index.mjs",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "yarn clean && tsc && cp package.json README.md ./dist",
-    "publishToNpm": "npm publish ./dist"
+    "build": "nx build react-simple-qr-code-scanner && cp README.md dist/libs/react-simple-qr-code-scanner/README.md && cp package.json dist/libs/react-simple-qr-code-scanner/package.json"
   },
   "repository": {
     "type": "git",
@@ -29,13 +28,9 @@
   "bugs": {
     "url": "https://github.com/mitchellston/qr-code-scanner/issues"
   },
+  "dependencies": {},
   "devDependencies": {
-    "@types/react": "^17.0.52",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.8.4"
-  },
-  "dependencies": {
-    "@zxing/library": "^0.19.1"
+    "nx": "16.5.0",
+    "nx-cloud": "latest"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "components",
+  "version": "1.5.1",
+  "description": "A super simple qr code scanner",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsup",
+    "publishToNpm": "npm publish ./dist"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.62",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tsup": "^7.1.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@zxing/library": "^0.19.3"
+  }
+}
