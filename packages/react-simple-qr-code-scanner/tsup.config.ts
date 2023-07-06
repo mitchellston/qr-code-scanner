@@ -4,7 +4,7 @@ export default defineConfig((opts) => ({
   splitting: true,
   sourcemap: false,
   dts: true,
-  outDir: "../../dist/libs/react-simple-qr-code-scanner",
+  outDir: "dist",
   format: ["esm"],
   entry: ["./index.ts"],
   clean: !opts.watch,

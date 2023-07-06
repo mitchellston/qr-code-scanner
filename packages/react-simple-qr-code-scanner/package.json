@@ -1,0 +1,49 @@
+{
+  "name": "react-simple-qr-code-scanner",
+  "version": "1.5.2",
+  "description": "A super simple qr code scanner",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "qr codes",
+    "qr-codes",
+    "qrcodes",
+    "qr code",
+    "qr-code",
+    "qrcode"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitchellston/qr-code-scanner"
+  },
+  "author": {
+    "name": "Mitchellston"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mitchellston/qr-code-scanner/issues"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.62",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tsup": "^7.1.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@zxing/library": "^0.19.3",
+    "superjson": "^1.12.4"
+  }
+}
