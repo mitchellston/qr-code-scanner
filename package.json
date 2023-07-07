@@ -4,10 +4,10 @@
   "scripts": {
     "build": "nx build react-simple-qr-code-scanner",
     "test": "nx dev test",
-    "publish": "npm publish ./packages/components/",
-    "publish:beta": "pnpm i && nx build components && npm publish ./packages/components/ --tag beta",
-    "publish:alpha": "pnpm i && nx build components && npm publish ./packages/components/ --tag alpha",
-    "prepublish": "pnpm i && nx build components"
+    "publish": "npm publish ./packages/react-simple-qr-code-scanner/",
+    "publish:beta": "pnpm i && nx build react-simple-qr-code-scanner && npm publish ./packages/react-simple-qr-code-scanner/ --tag beta",
+    "publish:alpha": "pnpm i && nx build react-simple-qr-code-scanner && npm publish ./packages/react-simple-qr-code-scanner/ --tag alpha",
+    "prepublish": "pnpm i && nx build react-simple-qr-code-scanner"
   },
   "dependencies": {},
   "devDependencies": {
