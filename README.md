@@ -8,13 +8,13 @@ A step by step series guide to setup this component.
 
 ### Start a react project
 
-- Vite js:
+- For Vite react JavaScript starter template, run the following command:
 
 ```
 npm create vite@latest my-qr-code-scanner-application -- --template react
 ```
 
-- Vite ts:
+- For Vite react TypeScript starter template, use the command:
 
 ```
 npm create vite@latest my-qr-code-scanner-application -- --template react-ts
@@ -30,6 +30,8 @@ npm i react-simple-qr-code-scanner
 
 ### Basic
 
+The code snippet below demonstrates the basic usage of the QR code scanner component:
+
 ```tsx
 import { QrCodeScanner } from "react-simple-qr-code-scanner";
 function App() {
@@ -41,7 +43,7 @@ function App() {
       Errors={(error) => {
         console.log(error);
       }},
-      facingMode={"environment"} //or user
+      facingMode={"environment"} // Or "user"
     />
   );
 }
@@ -49,7 +51,7 @@ function App() {
 
 ### Validating qr code data
 
-_Currently there is only a zod validator_
+Currently, the component supports Zod as a validator for QR code data. See the example below:
 
 ```tsx
 import { QrCodeScanner } from "react-simple-qr-code-scanner";
@@ -68,7 +70,7 @@ function App() {
           console.log(result); // Result will be of the type {foo: string; bar: number;}
         }}
         onError={(error) => {
-          console.log(error); // If the bar is less than 500 the error message will be displayed
+          console.log(error); // Displays an error message if 'bar' is less than 500
         }}
       />
     </>
@@ -108,7 +110,7 @@ function App() {
           return { foo: data.foo, bar: data.bar };
         }}
         onResult={(result) => {
-          console.log(result); // Result will be of type QrCodeData here (since the validation checks for this)
+          console.log(result); // Result will be of type QrCodeData due to the validation defined in the 'validate' property
         }}
         onError={(errorScan) => {
           console.log(errorScan.message); // Log the validation error messages
@@ -119,8 +121,43 @@ function App() {
 }
 ```
 
+## Updating to version 2.0.0 (or higher)
+
+Starting from version 2.0.0, the onResult function now takes two parameters. The rawResult parameter represents the original result.
+
+### Examples
+
+Before 2.0.0:
+
+```tsx
+import { QrCodeScanner } from "react-simple-qr-code-scanner";
+function App() {
+  return (
+    <QrCodeScanner
+      onResult={(result) => {
+        console.log(result.getText());
+      }}
+    />
+  );
+}
+```
+
+Since Version 2.0.0:
+
+```tsx
+import { QrCodeScanner } from "react-simple-qr-code-scanner";
+function App() {
+  return (
+    <QrCodeScanner
+      onResult={(result, raw) => {
+        console.log(result); // Returns the text, parsing and validating it if necessary.
+        console.log(raw.getText()); //
+      }}
+    />
+  );
+}
+```
+
 ## License
 
-This project is licensed under the [MIT](LICENSE)
-License - see the [LICENSE](LICENSE) file for
-details
+This project is licensed under the [MIT License](LICENSE) License. See the [LICENSE](LICENSE) file for more details.
