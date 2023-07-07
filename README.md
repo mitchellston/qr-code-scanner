@@ -49,9 +49,39 @@ function App() {
 }
 ```
 
+### Custom styling
+
+The code snippet below demonstrates how to customize the styling of the QR code scanner component:
+
+```tsx
+import { QrCodeScanner } from "react-simple-qr-code-scanner";
+
+const App = () => (
+  <div style={{ width: "50vw" }}>
+    <QrCodeScanner
+      onResult={(result) => {
+        console.log(result);
+      }}
+    >
+      {(videoElement) => (
+        <div
+          style={{
+            borderColor: "rgb(147 197 253)",
+            borderWidth: "4px",
+            width: "100%",
+          }}
+        >
+          <video ref={videoElement} style={{ width: "100%", height: "100%" }} />
+        </div>
+      )}
+    </QrCodeScanner>
+  </div>
+);
+```
+
 ### Validating qr code data
 
-Currently, the component supports Zod as a validator for QR code data. See the example below:
+Currently, the component only supports Zod as a validator (or custom validators) for QR code data. See the example below:
 
 ```tsx
 import { QrCodeScanner } from "react-simple-qr-code-scanner";
