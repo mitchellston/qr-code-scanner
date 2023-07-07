@@ -71,7 +71,7 @@ function App() {
           if (
             !Object.prototype.hasOwnProperty.call(data, "bar") ||
             !("bar" in data) ||
-            data.bar ||
+            data.bar == null ||
             typeof data.bar != "number"
           )
             throw new Error("bar is required");

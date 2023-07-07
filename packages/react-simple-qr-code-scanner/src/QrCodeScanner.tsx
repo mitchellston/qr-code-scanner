@@ -1,7 +1,7 @@
 import { BrowserMultiFormatReader, Exception as Exp } from "@zxing/library";
 import { Result, Exception } from "..";
 import { useEffect, useRef } from "react";
-import { parse } from "superjson";
+import * as devalue from "devalue";
 import React from "react";
 
 export function QrCodeScanner<T = unknown>(props: {
@@ -26,6 +26,7 @@ export function QrCodeScanner<T = unknown>(props: {
 
   useEffect(() => {
     if (!videoRef.current) return;
+    reader.current.timeBetweenDecodingAttempts = 1000;
     reader.current.decodeFromConstraints(
       {
         audio: false,
@@ -40,7 +41,7 @@ export function QrCodeScanner<T = unknown>(props: {
             try {
               let data: T;
               try {
-                data = parse<T>(result.getText());
+                data = JSON.parse(result.getText());
               } catch (error) {
                 return props.validate
                   ? props.validate(result.getText())
