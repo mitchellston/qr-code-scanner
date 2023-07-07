@@ -1,19 +1,15 @@
-import { useState } from "react";
 import { Exception, QrCodeScanner } from "react-simple-qr-code-scanner";
-import { ZodQrCodeDataValidator } from "react-simple-qr-code-scanner/validators";
-import { z } from "zod";
-const QrCodeData = z.object({
-  foo: z.string(),
-  bar: z.number(),
-});
-function App() {
-  const [result, setResult] = useState<z.infer<typeof QrCodeData> | null>(null);
+import { useState } from "react";
+type QrCodeData = {
+  foo: string;
+  bar: number;
+};
+export function NoValidation() {
+  const [result, setResult] = useState<QrCodeData | null>(null);
   const [error, setError] = useState<Exception | null>(null);
-
   return (
     <>
-      <QrCodeScanner
-        validate={(data) => ZodQrCodeDataValidator(data, QrCodeData)}
+      <QrCodeScanner<QrCodeData>
         onResult={(resultScan) => {
           if (error) setError(null);
           if (result != resultScan) setResult(resultScan);
@@ -30,4 +26,3 @@ function App() {
     </>
   );
 }
-export default App;
