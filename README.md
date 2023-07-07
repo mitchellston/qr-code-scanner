@@ -80,6 +80,8 @@ function App() {
 
 ### Validating qr code data with custom validation
 
+In this example, custom validation is performed on the QR code data:
+
 ```tsx
 import { QrCodeScanner } from "react-simple-qr-code-scanner";
 type QrCodeData = {
