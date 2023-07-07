@@ -1,6 +1,6 @@
 # A simple qr-code scanner for react
 
-This is a simple qr-code scanner component for react
+This is a simple qr-code scanner component for react. Check out a simple demo [here](https://mitchellston.github.io/qr-code-scanner/)!
 
 ## Installing
 

@@ -1,0 +1,68 @@
+name: Deploy server
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish_npm:
+    runs-on: ubuntu-latest
+    name: Publish to NPM
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v2
+
+      - name: 🏗 Setup Node
+        if: success()
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: 📦 Install PNPM
+        if: success()
+        run: npm i -g pnpm
+
+      - name: 📦 Install dependencies
+        if: success()
+        run: pnpm install
+
+      - name: 👷 Build package
+        if: success()
+        run: pnpm run prepublish
+
+      - name: 🛫 Publish to NPM
+        if: success()
+        run: npm publish ./packages/react-simple-qr-code-scanner/
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  deploy_demo:
+    runs-on: ubuntu-latest
+    name: Deploy Github Pages demo
+    needs: publish_npm
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v2
+
+      - name: 🏗 Setup Node
+        if: success()
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: 📦 Install PNPM
+        if: success()
+        run: npm i -g pnpm
+
+      - name: 📦 Install dependencies
+        if: success()
+        run: pnpm install
+
+      - name: 👷 Build demo application
+        if: success()
+        run: pnpm run pages:build
+
+      - name: 🛫 Publish to Github Pages
+        if: success()
+        uses: bitovi/github-actions-react-to-ghp@v1.1.1
+        with:
+          path: ./packages/test/dist
