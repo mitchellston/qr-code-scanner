@@ -1,7 +1,6 @@
 import { BrowserMultiFormatReader, Exception as Exp } from "@zxing/library";
 import { Result, Exception } from "..";
 import { useEffect, useRef } from "react";
-import * as devalue from "devalue";
 import React from "react";
 
 export function QrCodeScanner<T = unknown>(props: {
