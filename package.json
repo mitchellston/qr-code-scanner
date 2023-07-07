@@ -6,7 +6,7 @@
     "test": "pnpm run build && npm-run-all --parallel test:*",
     "test:testProject": "nx dev test",
     "test:react-simple-qr-code-scanner": "cd packages/react-simple-qr-code-scanner && pnpm run watch",
-    "publish": "npm publish ./packages/react-simple-qr-code-scanner/",
+    "publish": "pnpm run prepublish && npm publish ./packages/react-simple-qr-code-scanner/",
     "publish:beta": "pnpm run prepublish && npm publish ./packages/react-simple-qr-code-scanner/ --tag beta",
     "publish:alpha": "pnpm run prepublish && npm publish ./packages/react-simple-qr-code-scanner/ --tag alpha",
     "prepublish": "pnpm i && nx build react-simple-qr-code-scanner && cp README.md ./packages/react-simple-qr-code-scanner/README.md && cp LICENSE ./packages/react-simple-qr-code-scanner/LICENSE"
