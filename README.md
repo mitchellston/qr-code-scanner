@@ -4,8 +4,6 @@ This is a simple qr-code scanner component for react
 
 ## Installing
 
----
-
 A step by step series guide to setup this component.
 
 ### Start a react project
@@ -29,8 +27,6 @@ npm i react-simple-qr-code-scanner
 ```
 
 ## Demos
-
----
 
 ### Basic
 
