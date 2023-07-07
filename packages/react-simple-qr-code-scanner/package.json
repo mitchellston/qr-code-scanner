@@ -1,6 +1,6 @@
 {
   "name": "react-simple-qr-code-scanner",
-  "version": "2.0.0",
+  "version": "2.0.0-beta.1",
   "description": "A super simple qr code scanner",
   "exports": {
     ".": {
@@ -13,8 +13,8 @@
   },
   "files": [
     "dist",
-    "../../LICENSE",
-    "../../README.md"
+    "LICENSE",
+    "README.md"
   ],
   "keywords": [
     "react",

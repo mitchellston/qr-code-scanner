@@ -6,15 +6,27 @@ This is a simple qr-code scanner component for react
 
 A step by step series guide to setup this component.
 
-Start a node project
+### Start a react project
 
-    npm init
+- Vite js:
 
-Install the library with composer
+```
+npm create vite@latest my-qr-code-scanner-application -- --template react
+```
 
-    npm i react-simple-qr-code-scanner
+- Vite ts:
 
-### Basic demo
+```
+npm create vite@latest my-qr-code-scanner-application -- --template react-ts
+```
+
+### Install the package with npm
+
+```
+npm i react-simple-qr-code-scanner
+```
+
+## Basic demo
 
 ```tsx
 import { QrCodeScanner } from "react-simple-qr-code-scanner";

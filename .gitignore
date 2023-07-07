@@ -37,3 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Copied files for npm
+/packages/react-simple-qr-code-scanner/README.md
+/packages/react-simple-qr-code-scanner/LICENSE

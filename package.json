@@ -5,9 +5,9 @@
     "build": "nx build react-simple-qr-code-scanner",
     "test": "nx dev test",
     "publish": "npm publish ./packages/react-simple-qr-code-scanner/",
-    "publish:beta": "pnpm i && nx build react-simple-qr-code-scanner && npm publish ./packages/react-simple-qr-code-scanner/ --tag beta",
-    "publish:alpha": "pnpm i && nx build react-simple-qr-code-scanner && npm publish ./packages/react-simple-qr-code-scanner/ --tag alpha",
-    "prepublish": "pnpm i && nx build react-simple-qr-code-scanner"
+    "publish:beta": "pnpm run prepublish && npm publish ./packages/react-simple-qr-code-scanner/ --tag beta",
+    "publish:alpha": "pnpm run prepublish && npm publish ./packages/react-simple-qr-code-scanner/ --tag alpha",
+    "prepublish": "pnpm i && nx build react-simple-qr-code-scanner && cp README.md ./packages/react-simple-qr-code-scanner/README.md && cp LICENSE ./packages/react-simple-qr-code-scanner/LICENSE"
   },
   "dependencies": {},
   "devDependencies": {
