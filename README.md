@@ -4,6 +4,8 @@ This is a simple qr-code scanner component for react
 
 ## Installing
 
+---
+
 A step by step series guide to setup this component.
 
 ### Start a react project
@@ -26,7 +28,11 @@ npm create vite@latest my-qr-code-scanner-application -- --template react-ts
 npm i react-simple-qr-code-scanner
 ```
 
-## Basic demo
+## Demos
+
+---
+
+### Basic
 
 ```tsx
 import { QrCodeScanner } from "react-simple-qr-code-scanner";
@@ -45,11 +51,39 @@ function App() {
 }
 ```
 
-### Validating qr code result
+### Validating qr code data
+
+_Currently there is only a zod validator_
 
 ```tsx
-import { useState } from "react";
-import { Exception, QrCodeScanner } from "react-simple-qr-code-scanner";
+import { QrCodeScanner } from "react-simple-qr-code-scanner";
+import { ZodQrCodeDataValidator } from "react-simple-qr-code-scanner/validators";
+import { z } from "zod";
+const QrCodeData = z.object({
+  foo: z.string(),
+  bar: z.number().min(500, "bar must be greater than 500"),
+});
+function App() {
+  return (
+    <>
+      <QrCodeScanner
+        validate={(data) => ZodQrCodeDataValidator(data, QrCodeData)}
+        onResult={(result) => {
+          console.log(result); // Result will be of the type {foo: string; bar: number;}
+        }}
+        onError={(error) => {
+          console.log(error); // If the bar is less than 500 the error message will be displayed
+        }}
+      />
+    </>
+  );
+}
+```
+
+### Validating qr code data with custom validation
+
+```tsx
+import { QrCodeScanner } from "react-simple-qr-code-scanner";
 type QrCodeData = {
   foo: string;
   bar: number;
@@ -78,10 +112,10 @@ function App() {
           return { foo: data.foo, bar: data.bar };
         }}
         onResult={(result) => {
-          console.log(result); // result will be of type IQrCodeData here (since the validation checks for this)
+          console.log(result); // Result will be of type QrCodeData here (since the validation checks for this)
         }}
         onError={(errorScan) => {
-          console.log(errorScan.message); // Get the error messages or any other error message
+          console.log(errorScan.message); // Log the validation error messages
         }}
       />
     </>
