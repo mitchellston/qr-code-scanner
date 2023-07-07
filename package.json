@@ -1,41 +1,19 @@
 {
   "name": "react-simple-qr-code-scanner",
-  "version": "1.5.1",
   "description": "A super simple qr code scanner",
-  "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "yarn clean && tsc && cp package.json README.md ./dist",
-    "publishToNpm": "npm publish ./dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mitchellston/qr-code-scanner"
-  },
-  "keywords": [
-    "react",
-    "typescript",
-    "qr codes",
-    "qr-codes",
-    "qrcodes",
-    "qr code",
-    "qr-code",
-    "qrcode"
-  ],
-  "author": {
-    "name": "Mitchellston"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mitchellston/qr-code-scanner/issues"
+    "build": "nx build react-simple-qr-code-scanner",
+    "test": "pnpm run build && npm-run-all --parallel test:*",
+    "test:testProject": "nx dev test",
+    "test:react-simple-qr-code-scanner": "cd packages/react-simple-qr-code-scanner && pnpm run watch",
+    "publish": "pnpm run prepublish && npm publish ./packages/react-simple-qr-code-scanner/",
+    "publish:beta": "pnpm run prepublish && npm publish ./packages/react-simple-qr-code-scanner/ --tag beta",
+    "publish:alpha": "pnpm run prepublish && npm publish ./packages/react-simple-qr-code-scanner/ --tag alpha",
+    "prepublish": "pnpm i && nx build react-simple-qr-code-scanner && cp README.md ./packages/react-simple-qr-code-scanner/README.md && cp LICENSE ./packages/react-simple-qr-code-scanner/LICENSE"
   },
   "devDependencies": {
-    "@types/react": "^17.0.52",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.8.4"
-  },
-  "dependencies": {
-    "@zxing/library": "^0.19.1"
+    "npm-run-all": "^4.1.5",
+    "nx": "16.5.0",
+    "nx-cloud": "latest"
   }
 }
