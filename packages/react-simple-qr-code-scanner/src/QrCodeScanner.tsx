@@ -4,8 +4,12 @@ import { useEffect, useRef } from "react";
 import { parse } from "superjson";
 import React from "react";
 
-export function QrCodeScanner<T = string>(props: {
-  /** This event gets fired when a qr-code is scanned */
+export function QrCodeScanner<T = unknown>(props: {
+  /**
+   * This event gets fired when a qr-code is scanned
+   * @param result The result of the qr-code (parsed)
+   * @param rawResult The result of the qr-code (raw, this is the result that you got before version 2.0.0)
+   */
   onResult: (result: T, rawResult: Result) => void;
   /** This event gets fired when a exception occurs */
   onError?: (error: Exception) => void;

@@ -1,6 +1,5 @@
 {
   "name": "react-simple-qr-code-scanner",
-  "version": "1.5.2",
   "description": "A super simple qr code scanner",
   "scripts": {
     "build": "nx build react-simple-qr-code-scanner",

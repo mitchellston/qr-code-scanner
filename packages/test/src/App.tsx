@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Exception, QrCodeScanner } from "react-simple-qr-code-scanner";
-interface IQrCodeData {
+type QrCodeData = {
   foo: string;
   bar: number;
-}
+};
 function App() {
-  const [result, setResult] = useState<IQrCodeData | null>(null);
+  const [result, setResult] = useState<QrCodeData | null>(null);
   const [error, setError] = useState<Exception | null>(null);
   return (
     <>

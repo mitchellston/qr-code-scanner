@@ -14,18 +14,18 @@ Install the library with composer
 
     npm i react-simple-qr-code-scanner
 
-### Demo
+### Basic demo
 
 ```tsx
 import { QrCodeScanner } from "react-simple-qr-code-scanner";
 function App() {
   return (
     <QrCodeScanner
-      onResult={(result) => {
+      onResult={(result, rawResult) => {
         console.log(result);
       }}
       Errors={(error) => {
-        //console.log(error);
+        console.log(error);
       }},
       facingMode={"environment"} //or user
     />
@@ -33,15 +33,15 @@ function App() {
 }
 ```
 
-### Validating Qr code data
+### Validating qr code result
 
 ```tsx
 import { useState } from "react";
 import { Exception, QrCodeScanner } from "react-simple-qr-code-scanner";
-interface IQrCodeData {
+type QrCodeData = {
   foo: string;
   bar: number;
-}
+};
 function App() {
   return (
     <>

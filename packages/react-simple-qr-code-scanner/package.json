@@ -1,6 +1,6 @@
 {
   "name": "react-simple-qr-code-scanner",
-  "version": "1.5.2",
+  "version": "2.0.0",
   "description": "A super simple qr code scanner",
   "exports": {
     ".": {
@@ -12,7 +12,9 @@
     "build": "tsup"
   },
   "files": [
-    "dist"
+    "dist",
+    "../../LICENSE",
+    "../../README.md"
   ],
   "keywords": [
     "react",
