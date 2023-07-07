@@ -12,20 +12,26 @@ export function QrCodeScanner<T = unknown>(props: {
   onResult: (result: T, rawResult: Result) => void;
   /** This event gets fired when a exception occurs */
   onError?: (error: Exception) => void;
+  /** Validate the qr codes data */
+  validate?: (data: unknown) => T;
+  /**
+   * The time between looking for a qr code (in milliseconds) in the video stream
+   * @default 500
+   */
+  timeBetweenQrCodeLookup?: number;
   /**
    * Which mode should the scanner face
    * @default "environment"
    */
   facingMode?: "environment" | "user";
-  /** Validate the qr codes data */
-  validate?: (data: unknown) => T;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const reader = useRef(new BrowserMultiFormatReader());
 
   useEffect(() => {
     if (!videoRef.current) return;
-    reader.current.timeBetweenDecodingAttempts = 1000;
+    reader.current.timeBetweenDecodingAttempts =
+      props.timeBetweenQrCodeLookup ?? 500;
     reader.current.decodeFromConstraints(
       {
         audio: false,
