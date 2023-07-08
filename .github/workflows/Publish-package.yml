@@ -58,6 +58,11 @@ jobs:
         if: success()
         run: pnpm install
 
+      - name: 📦 Install latest version of package
+        if: success()
+        run: pnpm install react-simple-qr-code-scanner@latest
+        working-directory: ./packages/test
+
       - name: 👷 Build demo application
         if: success()
         run: pnpm run pages:build
