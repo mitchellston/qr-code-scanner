@@ -1,6 +1,6 @@
 {
   "name": "react-simple-qr-code-scanner",
-  "version": "2.0.1",
+  "version": "2.5.0",
   "description": "A super simple qr code scanner",
   "exports": {
     ".": {
