@@ -40,6 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy Github Pages demo
     needs: publish_npm
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
@@ -68,6 +71,6 @@ jobs:
 
       - name: 🛫 Publish to Github Pages
         if: success()
-        uses: bitovi/github-actions-react-to-ghp@v1.1.1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ./packages/test/dist
+          folder: ./packages/test/dist
