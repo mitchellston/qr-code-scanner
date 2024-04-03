@@ -4,9 +4,12 @@ on:
     branches:
       - master
 jobs:
-  publish_npm:
+  deploy_demo:
     runs-on: ubuntu-latest
-    name: Publish to NPM
+    name: Deploy Github Pages demo
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
@@ -16,7 +19,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          registry-url: https://registry.npmjs.org/
 
       - name: 📦 Install PNPM
         if: success()
@@ -30,8 +32,12 @@ jobs:
         if: success()
         run: pnpm run prepublish
 
-      - name: 🛫 Publish to NPM
+      - name: 👷 Build demo application
         if: success()
-        run: npm publish ./packages/react-simple-qr-code-scanner/ --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: pnpm run pages:build
+
+      - name: 🛫 Publish to Github Pages
+        if: success()
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./packages/test/dist
